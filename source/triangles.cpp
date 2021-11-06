@@ -3,8 +3,6 @@
 #include <cstdlib>
 #include <vector>
 #include <set>
-#include "Triangle3D.h"
-#include "Distance3D.h"
 #include "Intersection3D.h"
 
 using namespace mygeom;

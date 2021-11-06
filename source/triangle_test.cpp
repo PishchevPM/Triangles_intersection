@@ -1,7 +1,7 @@
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
-#include "Triangle3D.h"
+#include "Intersection3D.h"
 
 using namespace mygeom;
 using namespace std;
@@ -21,7 +21,7 @@ const int rand_triangle_intersect_max = 10;
 
 const bool triangle_intersect_start = true;
 
-// [a, [b, c]] == b (a, c) - c (a, b) formula test
+// two parallel triangles test
 void parallel_test ()
 {
     cout << "Starting parallel triangle test:" << endl;
@@ -59,7 +59,7 @@ void parallel_test ()
     }
 }
 
-// (a, [b, c]) == (a, b, c) formula test
+// intersect triangle with plane test
 void plane_intersect_test ()
 {
     cout << "Starting plane_intersect triangle test:" << endl;
@@ -89,6 +89,7 @@ void plane_intersect_test ()
     }
 }
 
+// random two triangle intersection test
 void rand_triangle_intersect_test ()
 {
     cout << "Starting triangle intersect test:" << endl;
@@ -118,6 +119,7 @@ void rand_triangle_intersect_test ()
     }
 }
 
+// two triangle intersection test
 void triangle_intersect_test ()
 {
     cout << "Starting triangle intersect test:" << endl;

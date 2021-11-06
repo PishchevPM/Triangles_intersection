@@ -4,40 +4,40 @@ namespace mygeom
 {
     void Triangle3D::update_plane ()
     {
-        plane = Plane3D (points[0], points[1], points[2]);
-        if (!plane.is_valid ())
+        plane_ = Plane3D (points_[0], points_[1], points_[2]);
+        if (!plane_.is_valid ())
         {
-            if ((points[0] - points[2]).sqr() < (points[0] - points[1]).sqr())
-                std::swap (points[1], points[2]);
-            if ((points[0] - points[2]).sqr() < (points[2] - points[1]).sqr())
-                std::swap (points[1], points[0]);
+            if ((points_[0] - points_[2]).sqr() < (points_[0] - points_[1]).sqr())
+                std::swap (points_[1], points_[2]);
+            if ((points_[0] - points_[2]).sqr() < (points_[2] - points_[1]).sqr())
+                std::swap (points_[1], points_[0]);
 
             return;
         }
 
-        Vector3D mid = (points[0] + points[1] + points[2]) / 3;
-        mid = vecprod (points[0] - mid, points[1] - mid);
-        if (signed_distance (plane, points[0] + mid) < 0)
-            std::swap (points[1], points[2]);
+        Vector3D mid = (points_[0] + points_[1] + points_[2]) / 3;
+        mid = vecprod (points_[0] - mid, points_[1] - mid);
+        if (signed_distance (plane_, points_[0] + mid) < 0)
+            std::swap (points_[1], points_[2]);
     }
 
     Triangle3D::Triangle3D (Vector3D A, Vector3D B, Vector3D C)
     {
-        points[0] = A;
-        points[1] = B;
-        points[2] = C;
+        points_[0] = A;
+        points_[1] = B;
+        points_[2] = C;
         update_plane();
     };
 
     bool Triangle3D::is_true_triangle () const
     {
-        return plane.is_valid ();
+        return plane_.is_valid ();
     }
 
     Vector3D Triangle3D::get_vertex (int index) const
     {
         assert (index >= 0 && index <= 2);
-        return (points[index]);
+        return (points_[index]);
     }
 
     Vector3D Triangle3D::operator[] (int index) const
@@ -47,24 +47,24 @@ namespace mygeom
 
     Plane3D Triangle3D::get_plane () const
     {
-        return plane;
+        return plane_;
     }
 
     void Triangle3D::set_vertex (int num, Vector3D vec)
     {
         assert (num >= 0 && num <= 2);
-        points[num] = vec;
+        points_[num] = vec;
         update_plane();
     }
 
     bool Triangle3D::operator== (Triangle3D tr) const
     {
         if (is_true_triangle())
-            return (points[0] == tr.points[0]) || (points[1] == tr.points[0]) || (points[2] == tr.points[0]);
+            return (points_[0] == tr.points_[0]) || (points_[1] == tr.points_[0]) || (points_[2] == tr.points_[0]);
 
-        if (points[0] == tr.points[0] && points[1] == tr.points[1])
+        if (points_[0] == tr.points_[0] && points_[1] == tr.points_[1])
             return true;
-        if (points[0] == tr.points[1] && points[1] == tr.points[0])
+        if (points_[0] == tr.points_[1] && points_[1] == tr.points_[0])
             return true;
         return false;
     }

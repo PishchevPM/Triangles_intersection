@@ -15,6 +15,9 @@ namespace mygeom
         Vector3D (double xc, double yc, double zc) : x_(xc), y_(yc), z_(zc) {};
         Vector3D (const Vector3D& vec) : x_(vec.x_), y_(vec.y_), z_(vec.z_) {};
 
+        /**
+         * is vector components finite numbers?
+        **/
         bool is_valid () const;
 
         Vector3D& operator+= (Vector3D vec);
@@ -27,16 +30,30 @@ namespace mygeom
 
         Vector3D& operator/= (double scalar);
 
+        /**
+         * normalizing vector (depend on direction):
+         * (2, 0, 0), (-2, 0, 0) must be normalized in different vectors
+        **/
         Vector3D normalize () const;
 
+        /**
+         * normalizing vector (doesn't depend on direction):
+         * (2, 0, 0), (-2, 0, 0) must be normalized in same vector
+        **/
         Vector3D snormalize () const;
 
         bool operator== (Vector3D v) const;
 
         bool operator!= (Vector3D v) const;
 
+        /**
+         * x^2 + y^2 + z^2
+        **/
         double sqr () const;
 
+        /**
+         * sqrt(sqr())
+        **/
         double abs () const;
     };
 
