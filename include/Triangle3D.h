@@ -10,8 +10,8 @@ namespace mygeom
     class Triangle3D final
     {
         private:
-            Vector3D points[3] = {Vector3D(), Vector3D(), Vector3D()};
-            Plane3D plane;
+            Vector3D points_[3] = {Vector3D(), Vector3D(), Vector3D()};
+            Plane3D plane_;
 
             void update_plane ();
         public:
