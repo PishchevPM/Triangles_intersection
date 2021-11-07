@@ -109,6 +109,5 @@ int main ()
                     answers.insert({cells[i][j]->id, cells[i][k]->id});
 
     for (auto i : answers)
-        cout << i << " ";
-    cout << endl;
+        cout << i << endl;
 }

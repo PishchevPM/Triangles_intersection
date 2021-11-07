@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Vector3D.h"
-#include "Plane3D.h"
 #include "Distance3D.h"
 #include <algorithm> 
 
@@ -10,7 +8,7 @@ namespace mygeom
     class Triangle3D final
     {
         private:
-            Vector3D points_[3] = {Vector3D(), Vector3D(), Vector3D()};
+            Vector3D points_[3];
             Plane3D plane_;
 
             void update_plane ();

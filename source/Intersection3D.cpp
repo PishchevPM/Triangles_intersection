@@ -133,7 +133,6 @@ namespace mygeom
         for (int i = 0; i < 3; i++)
             trs[i] = vecprod (tr[i % 3], tr[(i + 1) % 3]);
         vcs = vecprod(vc1, vc2);
-
         for (int i = 0; i < 3; i++)
             if (dotprod (vcpr[i % 3][0] - vcpr[(i + 1) % 3][0] - trs[i], vcpr[i % 3][1] - vcpr[(i + 1) % 3][1] - trs[i]) < calc_err &&
                 dotprod (vcpr[i % 3][1] - vcpr[i % 3][0] - vcs, vcpr[(i + 1) % 3][1] - vcpr[(i + 1) % 3][0] - vcs) < calc_err)
@@ -158,13 +157,13 @@ namespace mygeom
         for (int i = 0; i < 3; i++)
         {
             tr1s[i] = vecprod (tr1[i % 3], tr1[(i + 1) % 3]);
-            tr2s[i] = vecprod (tr1[i % 3], tr1[(i + 1) % 3]);
+            tr2s[i] = vecprod (tr2[i % 3], tr2[(i + 1) % 3]);
         }
 
         for (int i = 0; i < 3; i++)
             for (int j = 0; j < 3; j++)
                 if (dotprod (vcpr[i % 3][j % 3] - vcpr[(i + 1) % 3][j % 3] - tr1s[i % 3], vcpr[i % 3][(j + 1) % 3] - vcpr[(i + 1) % 3][(j + 1) % 3] - tr1s[i % 3]) < calc_err &&
-                    dotprod (vcpr[i % 3][(j + 1) % 3] - vcpr[i % 3][j % 3] - tr2s[i % 3], vcpr[(i + 1) % 3][(j + 1) % 3] - vcpr[(i + 1) % 3][j % 3] - tr2s[i % 3]) < calc_err)
+                    dotprod (vcpr[i % 3][(j + 1) % 3] - vcpr[i % 3][j % 3] - tr2s[j % 3], vcpr[(i + 1) % 3][(j + 1) % 3] - vcpr[(i + 1) % 3][j % 3] - tr2s[j % 3]) < calc_err)
                     return true;
 
         if (is_point_in_triangle (tr1[0], tr2) || is_point_in_triangle (tr2[0], tr1))

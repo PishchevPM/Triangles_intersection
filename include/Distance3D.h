@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Vector3D.h"
 #include "Plane3D.h"
 
 namespace mygeom
