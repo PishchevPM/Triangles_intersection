@@ -112,7 +112,7 @@ namespace mygeom
 
         if (prods[0] > -calc_err && prods[1] > -calc_err && prods[2] > -calc_err)
             return true;
-        if (prods[1] < calc_err && prods[1] < calc_err && prods[2] < calc_err)
+        if (prods[0] < calc_err && prods[1] < calc_err && prods[2] < calc_err)
             return true;
 
         return false;
