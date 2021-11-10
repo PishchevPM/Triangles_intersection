@@ -21,14 +21,6 @@ namespace mygeom
             std::swap (points_[1], points_[2]);
     }
 
-    Triangle3D::Triangle3D (Vector3D A, Vector3D B, Vector3D C)
-    {
-        points_[0] = A;
-        points_[1] = B;
-        points_[2] = C;
-        update_plane();
-    };
-
     bool Triangle3D::is_true_triangle () const
     {
         return plane_.is_valid ();

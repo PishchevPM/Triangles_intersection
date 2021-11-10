@@ -87,8 +87,8 @@ int main ()
     vector<vector<TriangleWrapper*>> cells (count);
     for (unsigned long i = 0; i < count; i++)
     {
-        Vector3D rel_min = (triangles[i].min_cords - global_min) / div; 
-        Vector3D rel_max = (triangles[i].max_cords - global_min) / div; 
+        Vector3D rel_min = (triangles[i].min_cords - global_min) / div - calc_err * Vector3D (1, 1, 1); 
+        Vector3D rel_max = (triangles[i].max_cords - global_min) / div + calc_err * Vector3D (1, 1, 1); 
         unsigned long xlim = static_cast<unsigned long>(rel_max.x_) + 1;
         if (xlim > n) xlim--;
         unsigned long ylim = static_cast<unsigned long>(rel_max.y_) + 1;

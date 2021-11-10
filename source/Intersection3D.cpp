@@ -118,6 +118,12 @@ namespace mygeom
         return false;
     }
 
+    bool is_seg_inter_vecprod (Vector3D a1xb1, Vector3D a2xb1, Vector3D a1xb2, Vector3D a2xb2, Vector3D a1xa2, Vector3D b1xb2)
+    {
+        return dotprod (a1xb1 - a2xb1 - a1xa2, a1xb2 - a2xb2 - a1xa2) < calc_err &&
+               dotprod (a1xb2 - a1xb1 - b1xb2, a2xb2 - a2xb1 - b1xb2) < calc_err;
+    }
+
     bool is_intersect_on_plane(const Triangle3D& tr, const Vector3D& vc1, const Vector3D& vc2)
     {
         Vector3D vcpr[3][2];
@@ -134,8 +140,7 @@ namespace mygeom
             trs[i] = vecprod (tr[i % 3], tr[(i + 1) % 3]);
         vcs = vecprod(vc1, vc2);
         for (int i = 0; i < 3; i++)
-            if (dotprod (vcpr[i % 3][0] - vcpr[(i + 1) % 3][0] - trs[i], vcpr[i % 3][1] - vcpr[(i + 1) % 3][1] - trs[i]) < calc_err &&
-                dotprod (vcpr[i % 3][1] - vcpr[i % 3][0] - vcs, vcpr[(i + 1) % 3][1] - vcpr[(i + 1) % 3][0] - vcs) < calc_err)
+            if (is_seg_inter_vecprod (vcpr [i % 3][0], vcpr [(i + 1) % 3][0], vcpr [i % 3][1], vcpr [(i + 1) % 3][1], trs[i], vcs))
                 return true;
 
         if (tr.is_true_triangle())
@@ -162,8 +167,8 @@ namespace mygeom
 
         for (int i = 0; i < 3; i++)
             for (int j = 0; j < 3; j++)
-                if (dotprod (vcpr[i % 3][j % 3] - vcpr[(i + 1) % 3][j % 3] - tr1s[i % 3], vcpr[i % 3][(j + 1) % 3] - vcpr[(i + 1) % 3][(j + 1) % 3] - tr1s[i % 3]) < calc_err &&
-                    dotprod (vcpr[i % 3][(j + 1) % 3] - vcpr[i % 3][j % 3] - tr2s[j % 3], vcpr[(i + 1) % 3][(j + 1) % 3] - vcpr[(i + 1) % 3][j % 3] - tr2s[j % 3]) < calc_err)
+                if (is_seg_inter_vecprod (vcpr [i % 3][j % 3], vcpr [(i + 1) % 3][j % 3],
+                                          vcpr [i % 3][(j + 1) % 3], vcpr [(i + 1) % 3][(j + 1) % 3], tr1[i], tr2[j]))
                     return true;
 
         if (is_point_in_triangle (tr1[0], tr2) || is_point_in_triangle (tr2[0], tr1))

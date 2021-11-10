@@ -15,7 +15,10 @@ namespace mygeom
         public:
             Triangle3D () {};
 
-            Triangle3D (Vector3D A, Vector3D B, Vector3D C);
+            Triangle3D (Vector3D A, Vector3D B, Vector3D C) : points_{A, B, C}
+            {
+                update_plane ();
+            } 
 
             bool is_true_triangle () const;
 
