@@ -21,11 +21,6 @@ namespace mygeom
             std::swap (points_[1], points_[2]);
     }
 
-    bool Triangle3D::is_true_triangle () const
-    {
-        return plane_.is_valid ();
-    }
-
     Vector3D Triangle3D::get_vertex (int index) const
     {
         assert (index >= 0 && index <= 2);

@@ -35,14 +35,18 @@ namespace mygeom
             /**
              * is plane valid? (non-degenerate)
             **/
-            bool is_valid () const;
-
+            inline bool is_valid () const
+            {
+                return norm_.is_valid();
+            }
             /**
              * get normal vector of plane
              * @return normal, if plane is valid or something scary if plane isn't valid
             **/
-            Vector3D get_normal () const;
-
+            inline Vector3D get_normal () const
+            {
+                return norm_;
+            }
             /**
              * set normal vector
             **/

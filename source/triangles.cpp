@@ -89,11 +89,11 @@ int main ()
     {
         Vector3D rel_min = (triangles[i].min_cords - global_min) / div - calc_err * Vector3D (1, 1, 1); 
         Vector3D rel_max = (triangles[i].max_cords - global_min) / div + calc_err * Vector3D (1, 1, 1); 
-        unsigned long xlim = static_cast<unsigned long>(rel_max.x_) + 1;
+        unsigned long xlim = lrint (rel_max.x_) + 1;
         if (xlim > n) xlim--;
-        unsigned long ylim = static_cast<unsigned long>(rel_max.y_) + 1;
+        unsigned long ylim = lrint (rel_max.y_) + 1;
         if (ylim > n) ylim--;
-        unsigned long zlim = static_cast<unsigned long>(rel_max.z_) + 1;
+        unsigned long zlim = lrint (rel_max.z_) + 1;
         if (zlim > n) zlim--;
         for (unsigned long j = rel_min.x_; j <  xlim; j++)
             for (unsigned long k = rel_min.y_; k < ylim; k++)

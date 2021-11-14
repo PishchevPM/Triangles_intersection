@@ -29,16 +29,6 @@ namespace mygeom
         D_ = -dotprod (norm_, p1);
     };
 
-    bool Plane3D::is_valid () const
-    {
-        return norm_.is_valid();
-    }
-
-    Vector3D Plane3D::get_normal () const
-    {
-        return norm_;
-    }
-
     void Plane3D::set_normal (Vector3D vec)
     {
         norm_ = vec.snormalize();

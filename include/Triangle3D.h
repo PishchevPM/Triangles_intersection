@@ -20,7 +20,10 @@ namespace mygeom
                 update_plane ();
             } 
 
-            bool is_true_triangle () const;
+            inline bool is_true_triangle () const
+            {
+                return plane_.is_valid ();
+            }
 
             Vector3D get_vertex (int index) const;
 
