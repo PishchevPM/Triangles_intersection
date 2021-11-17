@@ -99,7 +99,10 @@ namespace mygeom
         return Vector3D (vc1.x_ / vc2.x_, vc1.y_ / vc2.y_, vc1.z_ / vc2.z_);
     };
 
-    double dotprod (const Vector3D vec1, const Vector3D vec2);
+    inline double dotprod (const Vector3D vec1, const Vector3D vec2)
+    {
+        return vec1.x_ * vec2.x_ + vec1.y_ * vec2.y_ + vec1.z_ * vec2.z_; 
+    }
 
     Vector3D vecprod (const Vector3D vec1, const Vector3D vec2);
 

@@ -68,12 +68,7 @@ namespace mygeom
                (std::abs(y_ - v.y_) > calc_err) && 
                (std::abs(z_ - v.z_) > calc_err);;
     }
-
-    double dotprod (const Vector3D vec1, const Vector3D vec2)
-    {
-        return vec1.x_ * vec2.x_ + vec1.y_ * vec2.y_ + vec1.z_ * vec2.z_; 
-    }
-
+    
     Vector3D vecprod (const Vector3D vec1, const Vector3D vec2)
     {
         Vector3D tmp (0, 0, 0);

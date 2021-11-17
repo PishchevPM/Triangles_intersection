@@ -21,22 +21,6 @@ namespace mygeom
             std::swap (points_[1], points_[2]);
     }
 
-    Vector3D Triangle3D::get_vertex (int index) const
-    {
-        assert (index >= 0 && index <= 2);
-        return (points_[index]);
-    }
-
-    Vector3D Triangle3D::operator[] (int index) const
-    {
-        return get_vertex(index);
-    }
-
-    Plane3D Triangle3D::get_plane () const
-    {
-        return plane_;
-    }
-
     void Triangle3D::set_vertex (int num, Vector3D vec)
     {
         assert (num >= 0 && num <= 2);

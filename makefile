@@ -1,6 +1,6 @@
 CC = g++
 CFLAGS = -std=c++11 -g -O2 -Wall -I include
-BASEOBJECTS = Intersection3D.o Plane3D.o Distance3D.o Triangle3D.o Vector3D.o
+BASEOBJECTS = Intersection3D.o Plane3D.o Triangle3D.o Vector3D.o
 OTHEROBJECTS = vector_test.o vector_test triangle_test.o triangle_test triangles.o triangles
 
 all: triangles
@@ -13,9 +13,6 @@ Intersection3D.o: include/Intersection3D.h source/Intersection3D.cpp
 
 Plane3D.o: include/Plane3D.h source/Plane3D.cpp
 	$(CC) $(CFLAGS) source/Plane3D.cpp -c -o Plane3D.o
-
-Distance3D.o: include/Distance3D.h source/Distance3D.cpp
-	$(CC) $(CFLAGS) source/Distance3D.cpp -c -o Distance3D.o
 
 Triangle3D.o: include/Triangle3D.h source/Triangle3D.cpp
 	$(CC) $(CFLAGS) source/Triangle3D.cpp -c -o Triangle3D.o

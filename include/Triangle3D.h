@@ -25,11 +25,21 @@ namespace mygeom
                 return plane_.is_valid ();
             }
 
-            Vector3D get_vertex (int index) const;
+            inline Vector3D get_vertex (int index) const
+            {
+                assert (index >= 0 && index <= 2);
+                return (points_[index]);
+            }
 
-            Vector3D operator[] (int index) const;
+            inline Plane3D get_plane () const
+            {
+                return plane_;
+            }
 
-            Plane3D get_plane () const;
+            inline Vector3D operator[] (int index) const
+            {
+                return get_vertex(index);
+            }
 
             void set_vertex (int num, Vector3D vec);
 

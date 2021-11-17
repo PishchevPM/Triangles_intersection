@@ -2,11 +2,6 @@
 
 namespace mygeom
 {
-    bool is_parallel (const Vector3D& vc1, const Vector3D& vc2)
-    {
-        return vecprod(vc1, vc2) == Vector3D (0, 0, 0);
-    }
-
     bool is_parallel (const Plane3D& pl1, const Plane3D& pl2)
     {
         if (pl1.is_valid() && pl2.is_valid())
@@ -21,11 +16,6 @@ namespace mygeom
             return std::abs (dotprod (pl.get_normal(), vc)) < calc_err;
         else
             return false;
-    }
-
-    bool is_parallel (const Plane3D& pl, const Vector3D& vc)
-    {
-        return is_parallel(vc, pl);
     }
 
     bool is_parallel (const Triangle3D& tr1, const Triangle3D& tr2)
@@ -49,11 +39,6 @@ namespace mygeom
             return is_parallel((tr[2] - tr[0]), pl);
     }
 
-    bool is_parallel (const Plane3D& pl, const Triangle3D& tr)
-    {
-        return is_parallel(tr, pl);
-    }
-
     bool in_same_plane (const Triangle3D& tr1, const Triangle3D& tr2)
     {
         bool tt1 = tr1.is_true_triangle(), tt2 = tr2.is_true_triangle();
@@ -67,11 +52,6 @@ namespace mygeom
                    distance (tr2.get_plane(), tr1[2]) < calc_err;
 
         return std::abs(tripprod(tr1[2] - tr1[0], tr2[2] - tr2[0], tr2[0] - tr1[0])) < calc_err;
-    }
-
-    bool is_contains (const Plane3D& pl, const Vector3D& p)
-    {
-        return std::abs (dotprod (p, pl.get_normal()) + pl.D_) < calc_err;
     }
 
     Vector3D intersect (const Vector3D& vc1, const Vector3D& vc2, const Plane3D& pl)

@@ -10,7 +10,10 @@ namespace mygeom
      * @param vec2 vector of second point
      * @return double - distance between points
     **/
-    double distance (const Vector3D vec1, const Vector3D vec2);
+    inline double distance (const Vector3D vec1, const Vector3D vec2)
+    {
+        return sqrt((vec1 - vec2).sqr());
+    }
 
     /**
      * signed distance between from point to plane (sign depends on half-space of point)
@@ -18,10 +21,16 @@ namespace mygeom
      * @param vec2 vector of point
      * @return double - signed distance
     **/
-    double signed_distance (const Plane3D pl, const Vector3D vec);
+    inline double signed_distance (const Plane3D pl, const Vector3D vec)
+    {
+        return dotprod (vec, pl.get_normal()) + pl.D_;
+    }
 
     /**
      * unsigned distance from point to plane
     **/
-    double distance (const Plane3D pl, const Vector3D vec);
+    inline double distance (const Plane3D pl, const Vector3D vec)
+    {
+        return std::abs (signed_distance (pl, vec));
+    }
 }
